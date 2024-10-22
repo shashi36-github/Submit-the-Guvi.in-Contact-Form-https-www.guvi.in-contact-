@@ -1,0 +1,855 @@
+ body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: none;
+            background-color: #099f4e;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 20px;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        #back-to-top:hover {
+            background-color: #45a049;
+            cursor: pointer;
+        }
+
+        /* Navigation Bar Styles */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Styles */
+        .navbar-logo img {
+            height: 50px;
+            width: auto;
+            transition: height 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-logo img {
+                height: 40px;
+            }
+        }
+
+        /* Hamburger Menu Icon (Hidden on Desktop) */
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navigation Menu */
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Items */
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-link {
+            display: block;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-link:hover,
+        .navbar-link:focus {
+            background-color: #f1f1f1;
+            color: #099f4e;
+        }
+
+        /* Active Link Highlighting */
+        .navbar-menu .navbar-item .navbar-link.active {
+            border-bottom: 2px solid #099f4e;
+            color: #099f4e;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.open {
+            display: flex;
+        }
+
+        .dropdown-menu li a {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-menu li a:hover,
+        .dropdown-menu li a:focus {
+            background-color: #f1f1f1;
+            color: #099f4e;
+        }
+
+        /* Dropdown Toggle Styles */
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #333;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover,
+        .dropdown-toggle:focus {
+            background-color: #f1f1f1;
+            color: #099f4e;
+        }
+
+        .dropdown-toggle .fa-caret-down {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+
+        /* Right Navigation (Login & Signup) */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .navbar-link.login {
+            background-color: transparent;
+            border: 2px solid #099f4e;
+            color: #099f4e;
+            border-radius: 4px;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-link.login:hover,
+        .navbar-link.login:focus {
+            background-color: #099f4e;
+            color: #ffffff;
+        }
+
+        .navbar-link.signup {
+            background-color: #099f4e;
+            border: 2px solid #099f4e;
+            color: #ffffff;
+            border-radius: 4px;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-link.signup:hover,
+        .navbar-link.signup:focus {
+            background-color: #067a3a;
+            color: #ffffff;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            /* Show Hamburger Menu Icon */
+            .navbar-toggle {
+                display: block;
+            }
+
+            /* Hide Navigation Menu by Default */
+            .navbar-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .navbar-menu.active {
+                max-height: 500px; /* Adjust as needed */
+            }
+
+            /* Navigation Items */
+            .navbar-item {
+                width: 100%;
+            }
+
+            .navbar-link {
+                width: 100%;
+                padding: 15px 20px;
+            }
+
+            /* Dropdown Menu for Mobile */
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+            }
+
+            .dropdown-menu li a {
+                padding: 10px 0;
+            }
+
+            /* Right Navigation */
+            .nav-right {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+            }
+
+            .nav-right .navbar-link {
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+        /* Smooth Transitions */
+        .navbar-menu,
+        .dropdown-menu {
+            transition: all 0.3s ease;
+        }
+
+        /* Explore More Programs Link Styling */
+        .dropdown-menu .explore-more {
+            color: #099f4e;
+            font-weight: bold;
+        }
+
+        .dropdown-menu .explore-more:hover,
+        .dropdown-menu .explore-more:focus {
+            background-color: #e6f7f1;
+        }
+
+        /* Additional Aesthetic Enhancements */
+        .navbar-link i {
+            margin-left: 5px;
+        }
+
+        /* Accessibility Focus States */
+        .navbar-link:focus,
+        .dropdown-toggle:focus,
+        .navbar-toggle:focus {
+            outline: 2px solid #099f4e;
+            outline-offset: 2px;
+        }
+
+        /* Middle Section Layout */
+        .middle {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 20px;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Decorative Images */
+        .left-top-image {
+            position: absolute;
+            top: -78px;
+            left: 80px;
+            width: 200px;
+            z-index: 0;
+        }
+
+        .left-bottom-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            z-index: 0;
+        }
+
+        /* Gray Line Separator */
+        .gray-line {
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        /* Left Section Styles */
+        .left-section {
+            flex: 1;
+            background-color: white;
+            margin-left: 250px;
+            margin-right: 30px;
+            max-width: 50%;
+            line-height: 1.6rem;
+        }
+
+        .left-section h1 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .left-section p {
+            margin-bottom: 20px;
+        }
+
+        .left-section .contact-info {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .left-section .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .left-section .contact-icon {
+            width: 40px;
+            margin-right: 50px;
+        }
+
+        .left-section .contactUs_1 {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        .left-section .contactUs_2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: -0.9rem;
+            line-height: 1.7rem;
+        }
+
+        /* Right Section (Contact Form) Styles */
+        .right-section {
+            position: relative;
+            flex: 1;
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 90px;
+            margin-left: 100px;
+            margin-right: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+            max-width: 50%;
+        }
+
+        .right-section .top-right-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 120px;
+            height: auto;
+        }
+
+        .right-section h1 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .right-section p {
+            margin-bottom: 20px;
+        }
+
+        .right-section .required {
+            color: red;
+        }
+
+        /* Form Styles */
+        .right-section .form-group {
+            margin-bottom: 20px;
+        }
+
+        .right-section .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .right-section input[type="text"],
+        .right-section input[type="email"],
+        .right-section input[type="tel"],
+        .right-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .right-section input[type="text"]:focus,
+        .right-section input[type="email"]:focus,
+        .right-section input[type="tel"]:focus,
+        .right-section textarea:focus {
+            border-color: #099f4e;
+            outline: none;
+        }
+
+        .right-section textarea {
+            resize: vertical;
+        }
+
+        .right-section button {
+            padding: 10px;
+            background-color: #099f4e;
+            width: 100%;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .right-section button:hover {
+            background-color: #45a049;
+        }
+
+        /* Maps Section Styles */
+        .maps-section {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .maps-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .maps-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .maps-container .map {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+
+        .maps-container .map h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Testimonials Section Styles */
+        .testimonials-section {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .testimonials-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .testimonials-container .testimonial {
+            flex: 1 1 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonials-container .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonials-container .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonials-container .testimonial h4 {
+            text-align: right;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            font-size: 16px;
+            background-color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover,
+        .faq-question.active {
+            background-color: #f1f1f1;
+            color: #099f4e;
+        }
+
+        .faq-answer {
+            padding: 0 15px 15px 15px;
+            display: none;
+            background-color: #fafafa;
+        }
+
+        .faq-answer p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .faq-answer a {
+            color: #099f4e;
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles for New Sections */
+        @media (max-width: 768px) {
+            .maps-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonials-container .testimonial {
+                flex: 1 1 80%;
+            }
+
+            .faq-container {
+                padding: 0 10px;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #121212; /* Dark gray background */
+            color: #f1f1f1; /* Lighter text for readability */
+            padding: 40px; /* Uniform padding */
+            font-size: 14px; /* Standard font size */
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.3); /* Subtle shadow to add depth */
+        }
+
+        .footer-columns {
+            display: flex;
+            justify-content: space-around; /* Evenly space columns */
+            flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+            align-items: flex-start; /* Align items to start vertically */
+        }
+
+        .footer-column {
+            flex: 1 1 180px; /* Flex grow, shrink, and basis */
+            margin: 20px; /* Spacing between columns */
+        }
+
+        .footer-column h4 {
+            color: #eaeaea; /* Slightly off-white color for headings */
+            margin-bottom: 10px; /* Space below headings */
+            font-weight: normal; /* Default font weight */
+        }
+
+        .footer-column ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+
+        .footer-column li a {
+            color: #ccc; /* Light gray for links */
+            text-decoration: none; /* No underline */
+            display: block; /* Block display for better click area */
+            margin: 5px 0; /* Margin for spacing */
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .footer-column li a:hover {
+            color: #fff; /* White color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .footer-base {
+            text-align: center; /* Center-align the text */
+            padding-top: 20px; /* Space above the text */
+            font-size: 12px; /* Smaller font size for less important text */
+            border-top: 1px solid #333; /* Subtle top border */
+            margin-top: 20px; /* Space before the base text */
+        }
+
+        .social-media {
+            text-align: center; /* Center social media links */
+            padding: 10px 0; /* Padding above and below */
+        }
+
+        .social-media a {
+            margin: 0 10px; /* Horizontal spacing */
+            display: inline-block; /* Display as inline-block for alignment */
+        }
+
+        .social-media img {
+            width: 20px; /* Icon size */
+            height: 20px; /* Icon size */
+            vertical-align: middle; /* Align icons vertically */
+        }
+
+        .refer-button {
+            background-color: #4caf50; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding inside the button */
+            text-decoration: none; /* No underline */
+            border-radius: 5px; /* Rounded corners */
+            display: inline-block; /* Display as inline-block for proper placement */
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .refer-button:hover {
+            background-color: #369638; /* Darker green on hover */
+        }
+
+        /* Additional Styles for New Sections */
+
+        /* Maps Section */
+        .maps-section {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .maps-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .maps-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .maps-container .map {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+
+        .maps-container .map h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .testimonials-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .testimonials-container .testimonial {
+            flex: 1 1 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonials-container .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonials-container .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonials-container .testimonial h4 {
+            text-align: right;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            font-size: 16px;
+            background-color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover,
+        .faq-question.active {
+            background-color: #f1f1f1;
+            color: #099f4e;
+        }
+
+        .faq-answer {
+            padding: 0 15px 15px 15px;
+            display: none;
+            background-color: #fafafa;
+        }
+
+        .faq-answer p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .faq-answer a {
+            color: #099f4e;
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
